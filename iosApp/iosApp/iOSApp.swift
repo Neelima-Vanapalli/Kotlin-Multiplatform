@@ -4,8 +4,14 @@ import SwiftUI
 struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
-			AppDelegate()
-			ScreenDelegate()
+			ViewControllerWrapper()
 		}
 	}
+}
+
+struct ViewControllerWrapper: UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        return ViewController() // Your custom UIViewController
+    }
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
