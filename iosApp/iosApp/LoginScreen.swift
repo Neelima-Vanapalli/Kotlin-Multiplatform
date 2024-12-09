@@ -1,7 +1,7 @@
 import UIKit
 import shared
 
-class ViewController: UIViewController {
+class LoginScreen: UIViewController {
 
     // UI Elements
     var usernameTextField: UITextField!

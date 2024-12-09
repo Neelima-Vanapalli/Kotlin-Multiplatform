@@ -1,17 +1,19 @@
 import SwiftUI
+import LoginScreen
+import UI
 
 @main
 struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
-			ViewControllerWrapper()
+			LoginScreenWrapper()
 		}
 	}
 }
 
-struct ViewControllerWrapper: UIViewControllerRepresentable {
+struct LoginScreenWrapper: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> some UIViewController {
-        return ViewController() // Your custom UIViewController
+        return LoginScreen() // Your custom UIViewController
     }
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
 }
