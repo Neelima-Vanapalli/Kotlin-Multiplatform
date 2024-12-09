@@ -34,15 +34,17 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="15dp"
                         android:layout_marginBottom="20dp"
-                        android:text="Login"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                        android:textColor="@color/green_900"
-                        app:fontFamily="sans-serif-medium" />
+                        android:clipToOutline="true"
+                        android:background="@drawable/circular_border"
+                        android:contentDescription="Kotlin Multiplatform"
+                        android:src="@drawable/ic_sayukth" />
+
 
                     <TextView
                         android:layout_width="wrap_content"
