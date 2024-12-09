@@ -1,11 +1,18 @@
 [versions]
 agp = "8.7.1"
+appcompatVersion = "1.x.x"
 kotlin = "2.0.0"
 compose = "1.5.4"
 compose-material3 = "1.1.2"
 androidx-activityCompose = "1.8.0"
+kotlinxCoroutinesCore = "1.x.x"
+kotlinxCoroutinesCoreVersion = "1.8.1"
+ktorClientSerialization = "2.x.x"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
+androidx-appcompat-v1xx = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -13,6 +20,14 @@ compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = 
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "compose-material3" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-core-v181 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCoreVersion" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientSerialization" }
+ktor-client-json = { module = "io.ktor:ktor-client-json", version.ref = "ktorClientSerialization" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientSerialization" }
+ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktorClientSerialization" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -1,40 +1,52 @@
 package com.example.demoapp.android
 
+import LoginPage
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.demoapp.Greeting
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.Toast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private val loginViewModel = LoginPage()
+    private lateinit var loader: ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            MyApplicationTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    GreetingView(Greeting().greet())
+        setContentView(R.layout.activity_main)
+
+        val username = findViewById<EditText>(R.id.emailAddress)
+        val password = findViewById<EditText>(R.id.password)
+        val loginButton = findViewById<Button>(R.id.loginBtn)
+        loader = findViewById(R.id.loading)
+
+        loginButton.setOnClickListener {
+            val username = username.text.toString()
+            val password = password.text.toString()
+
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                loader.visibility = ProgressBar.VISIBLE  // Show loader
+
+                loginViewModel.login(username, password) { isSuccess ->
+                    loader.visibility = ProgressBar.GONE  // Hide loader
+
+                    val message = if (isSuccess) "Login successful!" else "Invalid credentials"
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                 }
+
+
             }
+
         }
     }
+
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
