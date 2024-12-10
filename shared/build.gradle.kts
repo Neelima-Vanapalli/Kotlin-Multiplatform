@@ -40,6 +40,22 @@ kotlin {
             }
         }
     }
+
+    tasks.register("assembleXCFramework") {
+        dependsOn(
+            "linkDebugFrameworkIosX64",
+            "linkDebugFrameworkIosArm64",
+            "linkDebugFrameworkIosSimulatorArm64",
+            "linkReleaseFrameworkIosX64",
+            "linkReleaseFrameworkIosArm64",
+            "linkReleaseFrameworkIosSimulatorArm64"
+        )
+
+        doLast {
+            val frameworkDir = layout.buildDirectory.dir("bin/ios").get().asFile
+            println("XCFramework is ready in ${frameworkDir.absolutePath}")
+        }
+    }
 }
 
 android {
